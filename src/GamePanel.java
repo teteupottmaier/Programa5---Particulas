@@ -32,6 +32,8 @@ BufferedImage fundo;
 BufferedImage plotfundo;
 BufferedImage tileset;
 
+public static BufferedImage imgFumaca;
+public static BufferedImage imgFogo;
 
 boolean LEFT, RIGHT,UP,DOWN,FIRE;
 
@@ -177,6 +179,8 @@ public GamePanel()
 	plotfundo = new BufferedImage(fundo.getWidth(), fundo.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
 	tileset = loadImage("Bridge.png");
 	
+	imgFumaca = loadImage("Fumaca.png");
+	imgFogo = loadImage("Fogo.png");
 	
 	imagemcharsets = loadImage("chara1b.png");
 	DataBufferByte db = (DataBufferByte)imagemcharsets.getRaster().getDataBuffer();
@@ -340,7 +344,7 @@ private void gameUpdate(long DiffTime)
 	passo+=DiffTime;
 	timertiro+=DiffTime;
 	
-	if(FIRE&&timertiro>100){
+	if(FIRE&&timertiro>500){
 		int veltiro = 500;
 		float dx = (mapa.MapX+MouseX) - (heroi.x+heroi.cx);
 		float dy = (mapa.MapY+MouseY) - (heroi.y+heroi.cy);
@@ -352,17 +356,17 @@ private void gameUpdate(long DiffTime)
 		Projetil proj = new Projetil((int)(heroi.x+heroi.cx), (int)(heroi.y+heroi.cy), vx, vy,heroi);
 		listaDeProjetil.add(proj);
 		
-//		double ang2 = ang+Math.PI/12;
-//		vx = (float)(veltiro*Math.cos(ang2));
-//		vy = (float)(veltiro*Math.sin(ang2));
-//		proj = new Projetil((int)(heroi.x+heroi.cx), (int)(heroi.y+heroi.cy), vx, vy,heroi);
-//		listaDeProjetil.add(proj);
+		double ang2 = ang+Math.PI/20;
+		vx = (float)(veltiro*Math.cos(ang2));
+		vy = (float)(veltiro*Math.sin(ang2));
+		proj = new Projetil((int)(heroi.x+heroi.cx), (int)(heroi.y+heroi.cy), vx, vy,heroi);
+		listaDeProjetil.add(proj);
 		
-//		ang2 = ang-Math.PI/12;
-//		vx = (float)(veltiro*Math.cos(ang2));
-//		vy = (float)(veltiro*Math.sin(ang2));
-//		proj = new Projetil((int)(heroi.x+heroi.cx), (int)(heroi.y+heroi.cy), vx, vy,heroi);
-//		listaDeProjetil.add(proj);
+		ang2 = ang-Math.PI/20;
+		vx = (float)(veltiro*Math.cos(ang2));
+		vy = (float)(veltiro*Math.sin(ang2));
+		proj = new Projetil((int)(heroi.x+heroi.cx), (int)(heroi.y+heroi.cy), vx, vy,heroi);
+		listaDeProjetil.add(proj);
 		
 		timertiro = 0;
 	}

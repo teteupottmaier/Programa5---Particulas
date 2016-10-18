@@ -31,7 +31,37 @@ public class Projetil extends Sprite {
 		
 		x+=velx*DiffTime/1000.0;
 		y+=vely*DiffTime/1000.0;
-				
+		
+		double ang = Math.toDegrees(Math.atan2(vely, velx));
+			
+//		for(int i = 0; i < 15;i++){
+//			double ang2 = Math.toRadians(ang-30+GamePanel.rnd.nextInt(60)-180);
+//			float v = GamePanel.rnd.nextInt(50)+30;
+//			
+//			int variacao = GamePanel.rnd.nextInt(15);
+//			
+//			float x2 = x+(float)Math.cos(Math.toRadians(ang+180))*variacao;
+//			float y2 = y+(float)Math.sin(Math.toRadians(ang+180))*variacao;
+//			
+//			ParticulaFumaca part = new ParticulaFumaca(x2, y2,(float)Math.cos(ang2)*v,(float)Math.sin(ang2)*v, 800,Color.yellow,Color.lightGray);
+//			GamePanel.listaDeParticulas.add(part);
+//		}	
+		
+		for(int i = 0; i < 7;i++){
+			double ang2 = Math.toRadians(ang-30+GamePanel.rnd.nextInt(60)-180);
+			float v = GamePanel.rnd.nextInt(30)+20;
+			
+			int variacao = GamePanel.rnd.nextInt(15);
+			
+			float x2 = x+(float)Math.cos(Math.toRadians(ang+180))*variacao;
+			float y2 = y+(float)Math.sin(Math.toRadians(ang+180))*variacao;
+			
+			ParticulaImage part = new ParticulaImage(x2, y2,(float)Math.cos(ang2)*v,(float)Math.sin(ang2)*v, 800,GamePanel.imgFogo,GamePanel.imgFumaca);
+			GamePanel.listaDeParticulas.add(part);
+		}		
+		
+		
+		
 		int bx = (int)((x)/GamePanel.mapa.tileW);
 		int by = (int)((y)/GamePanel.mapa.tileH);
 		
@@ -39,8 +69,6 @@ public class Projetil extends Sprite {
 			x = oldx;
 			y = oldy;
 			vivo = false;
-			
-			double ang = Math.toDegrees(Math.atan2(vely, velx));
 			
 			for(int i = 0; i < 50;i++){
 				double ang2 = Math.toRadians(ang-30+GamePanel.rnd.nextInt(60)-180);
@@ -70,6 +98,22 @@ public class Projetil extends Sprite {
 				y = oldy;
 				vivo = false;
 				pers.levaDano(dano);
+				
+				for(int j = 0; j < 50;j++){
+					double ang2 = Math.toRadians(ang-30+GamePanel.rnd.nextInt(60)-180);
+					float v = GamePanel.rnd.nextInt(180)+20;
+					
+					Particula part = new Particula(x, y,(float)Math.cos(ang2)*v,(float)Math.sin(ang2)*v, 400,Color.red,new Color(80,0,0));
+					GamePanel.listaDeParticulas.add(part);
+				}
+				for(int j = 0; j < 10;j++){
+					double ang2 = Math.toRadians(ang-20+GamePanel.rnd.nextInt(40));
+					float v = GamePanel.rnd.nextInt(180)+20;
+					
+					Particula part = new Particula(x, y,(float)Math.cos(ang2)*v,(float)Math.sin(ang2)*v, 400,Color.red,new Color(80,0,0));
+					GamePanel.listaDeParticulas.add(part);
+				}				
+				
 				break;
 			}
 		}
