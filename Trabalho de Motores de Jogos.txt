@@ -1,0 +1,21 @@
+ 5 . Partículas
+
+Criar as seguintes features:
+
+- Barra de Life, Personagem e Inimigos
+
+- Inimigos quando morrem dropam itens.
+
+ 
+
+Criar as seguintes armas:
+
+- Lança Chamas
+
+- Arma Congelante
+
+- Arma de Poison
+
+- Missel Explosivo
+
+- Raio Laser
