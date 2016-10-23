@@ -21,6 +21,8 @@ private boolean gameOver = false;
 private BufferedImage dbImage;
 private Graphics2D dbg;
 
+public static int HEALTH = 100 * 2;
+
 
 int FPS,SFPS;
 int fpscount;
@@ -313,6 +315,7 @@ public void run()
 		gameUpdate(DifTime); // game state is updated
 		gameRender(); // render to a buffer
 		paintImmediately(0, 0, 640, 480); // paint with the buffer
+		
 	
 		try {
 			Thread.sleep(0); // sleep a bit
@@ -428,12 +431,15 @@ private void gameRender()
 // draw the current frame to an image buffer
 {
 	dbg.setColor(Color.white);
-	dbg.fillRect(0, 0, PWIDTH, PHEIGHT);
+	dbg.fillRect(5, 5, PWIDTH, PHEIGHT);
+	
+	
 	
 	mapa.DesenhaSe(dbg);
 	
 	for(int i = 0; i < listaDePersonagens.size();i++){
 		listaDePersonagens.get(i).desenhaSe(dbg,mapa.MapX,mapa.MapY);
+		
 	}
 	
 	for(int i = 0; i < listaDeProjetil.size();i++){
@@ -446,6 +452,10 @@ private void gameRender()
 	
 	dbg.setColor(Color.blue);
 	dbg.drawString("FPS "+FPS+ " "+MouseX+" "+MouseY+" LEFT "+LEFT+" RIGHT "+RIGHT+" ->"+listaDeParticulas.size(), 10, 20);
+	
+	
+	//dbg.setColor(Color.gray);
+	//dbg.fillRect(5, 10, 200, 25);
 }
 
 
