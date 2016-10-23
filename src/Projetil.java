@@ -11,7 +11,7 @@ public class Projetil extends Sprite {
     
     Personagem pai = null;
     
-    int dano = 50;
+    int dano = 10;
 
 	public Projetil(int x,int y, float velX,float velY,Personagem pai) {
 		// TODO Auto-generated constructor stub

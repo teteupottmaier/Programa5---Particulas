@@ -98,7 +98,7 @@ public class Personagem extends Sprite {
 		
 		dbg.setColor(Color.gray);
 		//dbg.fillRect(5, 10, 200, 25);
-		dbg.fillRect((int)x-telax,(int)y-telay -8 , 25, 10);
+		dbg.fillRect((int)x-telax,(int)y-telay -8 , life, 10);
 	}
 	
 	public boolean colide(Personagem pers){

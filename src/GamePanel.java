@@ -371,9 +371,11 @@ private void gameUpdate(long DiffTime)
 		proj = new Projetil((int)(heroi.x+heroi.cx), (int)(heroi.y+heroi.cy), vx, vy,heroi);
 		listaDeProjetil.add(proj);
 		
+	
+		
 		timertiro = 0;
 	}
-	
+
 	
 	if(LEFT){
 		heroi.velx = -heroi.vel;
@@ -398,6 +400,7 @@ private void gameUpdate(long DiffTime)
 	
 	for(int i = 0; i < listaDePersonagens.size();i++){
 		Sprite s = listaDePersonagens.get(i);
+		
 		s.simulaSe(DiffTime);
 		if(s.vivo==false){
 			listaDePersonagens.remove(i);
@@ -413,6 +416,11 @@ private void gameUpdate(long DiffTime)
 		}
 		
 	}
+	
+
+	
+	
+	
 	
 	for(int i = 0; i < listaDeParticulas.size();i++){
 		Sprite s = listaDeParticulas.get(i);
